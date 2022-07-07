@@ -8,6 +8,7 @@ class ShoppingState extends Equatable {
     this.cartItems = const {},
     // this.adding = false,
     // this.removing = false,
+    this.checkingOut = CheckoutStatus.none,
   });
 
   final Map<Item, int> cartItems;
@@ -16,6 +17,7 @@ class ShoppingState extends Equatable {
   final bool loading;
   // final bool adding;
   // final bool removing;
+  final CheckoutStatus checkingOut;
 
   ShoppingState copyWith({
     bool loading = false,
@@ -24,12 +26,14 @@ class ShoppingState extends Equatable {
     // bool adding = false,
     // bool removing = false,
     List<Item>? items,
+    final CheckoutStatus checkingOut = CheckoutStatus.none,
   }) {
     return ShoppingState(
       loading: loading,
       cartItems: cartItems ?? this.cartItems,
       hasError: hasError,
       items: items ?? this.items,
+      checkingOut: checkingOut,
     );
   }
 
@@ -41,5 +45,13 @@ class ShoppingState extends Equatable {
         hasError,
         // removing,
         items,
+        checkingOut,
       ];
+}
+
+enum CheckoutStatus {
+  none,
+  inProcess,
+  failed,
+  completed;
 }

@@ -14,6 +14,7 @@ class ShoppingBloc extends Bloc<ShoppingEvent, ShoppingState> {
     on<LoadItems>(_onLoadItems);
     on<AddToCart>(_onAddToCart);
     on<RemoveFromCart>(_onRemoveFromCart);
+    on<CheckOut>(_onCheckOut);
   }
 
   final HomeApiFacade _api = HomeApiFacade();
@@ -58,5 +59,16 @@ class ShoppingBloc extends Bloc<ShoppingEvent, ShoppingState> {
         cartItems: newCartItems,
       ),
     );
+  }
+
+  void _onCheckOut(CheckOut event, Emitter emit) async {
+    emit(state.copyWith(checkingOut: CheckoutStatus.inProcess));
+    final response = await _api.checkOut(state.cartItems);
+    if (response) {
+      emit(
+          state.copyWith(cartItems: {}, checkingOut: CheckoutStatus.completed));
+    } else {
+      emit(state.copyWith(checkingOut: CheckoutStatus.failed));
+    }
   }
 }

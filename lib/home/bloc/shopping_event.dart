@@ -20,3 +20,5 @@ class RemoveFromCart extends ShoppingEvent {
 
   const RemoveFromCart(this.item);
 }
+
+class CheckOut extends ShoppingEvent {}
