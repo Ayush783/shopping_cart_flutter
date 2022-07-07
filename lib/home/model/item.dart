@@ -1,0 +1,43 @@
+import 'package:equatable/equatable.dart';
+
+class Item extends Equatable {
+  final String name;
+  final String img;
+  final String desc;
+
+  const Item({
+    required this.name,
+    required this.img,
+    required this.desc,
+  });
+
+  Item.fromJson(Map<String, dynamic> json)
+      : name = json['name'],
+        img = 'assets/dummy/${json['img']}',
+        desc = json['desc'];
+
+  Item copyWith(Item i) {
+    return Item(name: i.name, img: i.img, desc: i.desc);
+  }
+
+  @override
+  List<Object?> get props => [name, img, desc];
+}
+
+class ItemResponse {
+  final List<Item> items;
+  final bool hasError;
+  final String errorMessage;
+
+  ItemResponse(this.items, this.hasError, this.errorMessage);
+
+  ItemResponse.success(List<Item> data)
+      : items = data,
+        hasError = false,
+        errorMessage = 'NO_ERROR';
+
+  ItemResponse.failure(String msg)
+      : hasError = true,
+        errorMessage = msg,
+        items = [];
+}
