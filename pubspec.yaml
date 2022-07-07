@@ -57,4 +57,4 @@ flutter:
 fonts:
     - family: poppins
       fonts:
-        - asset: assets/fonts/Poppins-Medium.otf
+        - asset: assets/fonts/Poppins-Medium.ttf

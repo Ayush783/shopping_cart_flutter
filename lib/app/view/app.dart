@@ -13,7 +13,7 @@ class App extends StatelessWidget {
         BlocProvider(create: (_) => ShoppingBloc()..add(LoadItems()))
       ],
       child: MaterialApp(
-        theme: ThemeData(fontFamily: 'satoshi'),
+        theme: ThemeData(fontFamily: 'poppins'),
         home: const HomeView(),
       ),
     );
