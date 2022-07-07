@@ -1,3 +1,4 @@
+import 'package:cart/cart/cart.dart';
 import 'package:cart/home/bloc/shopping_bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -21,7 +22,10 @@ class HomeView extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.symmetric(horizontal: 16),
             child: GestureDetector(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(context,
+                    MaterialPageRoute(builder: (_) => const CartView()));
+              },
               child: Stack(
                 alignment: Alignment.center,
                 children: [
