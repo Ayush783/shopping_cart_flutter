@@ -55,6 +55,6 @@ flutter:
     - assets/dummy/
     - assets/icons/
 fonts:
-    - family: satoshi
+    - family: poppins
       fonts:
-        - asset: assets/fonts/Satoshi-Medium.otf
+        - asset: assets/fonts/Poppins-Medium.otf
