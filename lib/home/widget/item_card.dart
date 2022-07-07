@@ -46,7 +46,14 @@ class _ItemCardState extends State<ItemCard> {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(widget.item.name),
-                Text(widget.item.desc),
+                Text(
+                  widget.item.desc,
+                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                ),
+                Text(
+                  '\$${widget.item.price}',
+                  style: const TextStyle(fontSize: 14, color: Colors.grey),
+                ),
               ],
             ),
           ),
